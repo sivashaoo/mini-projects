@@ -111,6 +111,6 @@ char pass[] = "YOUR_WIFI_PASSWORD";
 
 ## 👨‍💻 Author
 
-**Siva Suba S**
+**Siva Sahoo**
 
 Electrical Engineering | Embedded Systems | IoT
