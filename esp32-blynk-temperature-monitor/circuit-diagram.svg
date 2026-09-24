@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+  <rect width="1100" height="650" fill="white"/>
+  <text x="550" y="45" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold">ESP32-C3 Temperature Monitor Circuit</text>
+
+  <!-- ESP32-C3 -->
+  <rect x="420" y="150" width="260" height="300" rx="18" fill="#eeeeee" stroke="#222" stroke-width="3"/>
+  <text x="550" y="190" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">ESP32-C3 Mini</text>
+  <text x="455" y="240" font-family="Arial" font-size="18">GPIO 6</text>
+  <text x="455" y="285" font-family="Arial" font-size="18">GPIO 5</text>
+  <text x="455" y="330" font-family="Arial" font-size="18">GPIO 4</text>
+  <text x="455" y="385" font-family="Arial" font-size="18">3.3V</text>
+  <text x="455" y="425" font-family="Arial" font-size="18">GND</text>
+
+  <!-- DHT11 -->
+  <rect x="80" y="205" width="220" height="180" rx="15" fill="#d9f4ff" stroke="#222" stroke-width="3"/>
+  <text x="190" y="245" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">DHT11</text>
+  <text x="105" y="285" font-family="Arial" font-size="18">VCC</text>
+  <text x="105" y="325" font-family="Arial" font-size="18">DATA</text>
+  <text x="105" y="365" font-family="Arial" font-size="18">GND</text>
+
+  <!-- OLED -->
+  <rect x="800" y="185" width="230" height="230" rx="15" fill="#eeeeee" stroke="#222" stroke-width="3"/>
+  <rect x="835" y="235" width="160" height="100" fill="#111" stroke="#555" stroke-width="3"/>
+  <text x="915" y="215" text-anchor="middle" font-family="Arial" font-size="23" font-weight="bold">SH1106 OLED</text>
+  <text x="820" y="365" font-family="Arial" font-size="18">VCC</text>
+  <text x="820" y="395" font-family="Arial" font-size="18">GND</text>
+  <text x="930" y="365" font-family="Arial" font-size="18">SDA</text>
+  <text x="930" y="395" font-family="Arial" font-size="18">SCL</text>
+
+  <!-- Wires DHT -->
+  <line x1="300" y1="285" x2="420" y2="240" stroke="#222" stroke-width="5"/>
+  <line x1="300" y1="325" x2="420" y2="240" stroke="#7b1fa2" stroke-width="5"/>
+  <line x1="300" y1="365" x2="390" y2="365" stroke="#222" stroke-width="5"/>
+  <line x1="390" y1="365" x2="390" y2="425" stroke="#222" stroke-width="5"/>
+  <line x1="390" y1="425" x2="420" y2="425" stroke="#222" stroke-width="5"/>
+
+  <!-- Wires OLED -->
+  <line x1="680" y1="240" x2="760" y2="240" stroke="#2e7d32" stroke-width="5"/>
+  <line x1="760" y1="240" x2="760" y2="365" stroke="#2e7d32" stroke-width="5"/>
+  <line x1="760" y1="365" x2="930" y2="365" stroke="#2e7d32" stroke-width="5"/>
+
+  <line x1="680" y1="330" x2="790" y2="330" stroke="#1565c0" stroke-width="5"/>
+  <line x1="790" y1="330" x2="790" y2="395" stroke="#1565c0" stroke-width="5"/>
+  <line x1="790" y1="395" x2="930" y2="395" stroke="#1565c0" stroke-width="5"/>
+
+  <!-- Power -->
+  <line x1="680" y1="385" x2="735" y2="385" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="735" y1="385" x2="735" y2="450" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="735" y1="450" x2="190" y2="450" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="190" y1="450" x2="190" y2="285" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="190" y1="285" x2="300" y2="285" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="735" y1="450" x2="735" y2="365" stroke="#d32f2f" stroke-width="5"/>
+  <line x1="735" y1="365" x2="820" y2="365" stroke="#d32f2f" stroke-width="5"/>
+
+  <!-- Common GND -->
+  <line x1="390" y1="425" x2="390" y2="520" stroke="#222" stroke-width="5"/>
+  <line x1="390" y1="520" x2="870" y2="520" stroke="#222" stroke-width="5"/>
+  <line x1="870" y1="520" x2="870" y2="395" stroke="#222" stroke-width="5"/>
+  <line x1="870" y1="395" x2="820" y2="395" stroke="#222" stroke-width="5"/>
+  <line x1="390" y1="520" x2="190" y2="520" stroke="#222" stroke-width="5"/>
+  <line x1="190" y1="520" x2="190" y2="365" stroke="#222" stroke-width="5"/>
+  <line x1="190" y1="365" x2="300" y2="365" stroke="#222" stroke-width="5"/>
+
+  <!-- Labels -->
+  <text x="550" y="590" text-anchor="middle" font-family="Arial" font-size="21">DHT11 DATA → GPIO 6  |  OLED SDA → GPIO 5  |  OLED SCL → GPIO 4</text>
+  <text x="550" y="620" text-anchor="middle" font-family="Arial" font-size="21">3.3V supply and common GND</text>
+</svg>
