@@ -48,7 +48,7 @@ When the temperature exceeds **40°C**, the system sends a Blynk event notificat
 
 ### Circuit Diagram
 
-![Circuit Diagram](circuit-diagram.jpg)
+![Circuit Diagram](circuit-diagram.svg)
 
 ## 📱 Blynk IoT
 
