@@ -12,15 +12,19 @@ import android.text.method.ScrollingMovementMethod;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends Activity {
     private static final int PICK_MODEL = 41;
-    private static final String MODEL_NAME = "nimo-model.gguf";
+    private static final String MODEL_NAME = "SmolLM2-135M-Instruct-Q4_K_M.gguf";
+    private static final String MODEL_URL =
+        "https://huggingface.co/unsloth/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct-Q4_K_M.gguf?download=true";
     private TextView chat, status;
     private EditText input;
-    private Button send, loadButton;
+    private Button send, loadButton, downloadButton;
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private String modelPath = "";
     private boolean busy = false;
@@ -43,17 +47,22 @@ public class MainActivity extends Activity {
         root.addView(title);
 
         TextView subtitle = new TextView(this);
-        subtitle.setText("Offline AI • model runs locally after setup");
+        subtitle.setText("Offline AI • download the model once, then chat without internet");
         subtitle.setTextSize(13);
         root.addView(subtitle);
 
+        downloadButton = new Button(this);
+        downloadButton.setText("Download model (~105 MB)");
+        root.addView(downloadButton);
+        downloadButton.setOnClickListener(v -> downloadModel());
+
         loadButton = new Button(this);
-        loadButton.setText("Choose GGUF model");
+        loadButton.setText("Choose existing GGUF model");
         root.addView(loadButton);
         loadButton.setOnClickListener(v -> chooseModel());
 
         status = new TextView(this);
-        status.setText("Download a compatible SmolLM2-135M-Instruct GGUF file, then choose it here.");
+        status.setText("Download the recommended SmolLM2-135M-Instruct Q4_K_M model. Keep at least 300 MB free.");
         status.setTextSize(13);
         root.addView(status);
 
@@ -77,12 +86,75 @@ public class MainActivity extends Activity {
         setContentView(root);
 
         File stored = new File(getFilesDir(), MODEL_NAME);
-        if (stored.exists()) {
+        if (stored.exists() && stored.length() > 1000000) {
             modelPath = stored.getAbsolutePath();
-            status.setText("A saved model was found. Tap Load saved model.");
+            status.setText("Saved model found. Tap Load saved model.");
             loadButton.setText("Load saved model");
             loadButton.setOnClickListener(v -> loadModel(modelPath));
         }
+    }
+
+    private void downloadModel() {
+        if (busy) return;
+        busy = true;
+        downloadButton.setEnabled(false);
+        loadButton.setEnabled(false);
+        status.setText("Downloading approximately 105 MB. Keep the app open and use Wi-Fi if possible.");
+        worker.execute(() -> {
+            File target = new File(getFilesDir(), MODEL_NAME);
+            File partial = new File(getFilesDir(), MODEL_NAME + ".part");
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) new URL(MODEL_URL).openConnection();
+                connection.setConnectTimeout(20000);
+                connection.setReadTimeout(60000);
+                connection.setInstanceFollowRedirects(true);
+                connection.setRequestProperty("User-Agent", "NIMO-AI-Android/0.2");
+                connection.connect();
+                int code = connection.getResponseCode();
+                if (code != 200) throw new Exception("Download server returned HTTP " + code);
+                long total = connection.getContentLengthLong();
+                try (InputStream in = connection.getInputStream();
+                     FileOutputStream out = new FileOutputStream(partial)) {
+                    byte[] buffer = new byte[128 * 1024];
+                    long copied = 0;
+                    int count;
+                    while ((count = in.read(buffer)) != -1) {
+                        out.write(buffer, 0, count);
+                        copied += count;
+                        if (total > 0) {
+                            final int percent = (int)(copied * 100 / total);
+                            runOnUiThread(() -> status.setText("Downloading model: " + percent + "%"));
+                        } else {
+                            final long mb = copied / (1024 * 1024);
+                            runOnUiThread(() -> status.setText("Downloaded " + mb + " MB..."));
+                        }
+                    }
+                }
+                if (partial.length() < 50000000) throw new Exception("Downloaded file is unexpectedly small; check your connection and retry.");
+                if (target.exists()) target.delete();
+                if (!partial.renameTo(target)) throw new Exception("Could not save the downloaded model.");
+                runOnUiThread(() -> {
+                    modelPath = target.getAbsolutePath();
+                    status.setText("Download complete. Loading model...");
+                    busy = false;
+                    downloadButton.setEnabled(true);
+                    loadButton.setEnabled(true);
+                    loadModel(modelPath);
+                });
+            } catch (Exception e) {
+                partial.delete();
+                final String message = "Download failed: " + e.getMessage();
+                runOnUiThread(() -> {
+                    status.setText(message);
+                    busy = false;
+                    downloadButton.setEnabled(true);
+                    loadButton.setEnabled(true);
+                });
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        });
     }
 
     private void chooseModel() {
@@ -96,7 +168,7 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode != PICK_MODEL || resultCode != RESULT_OK || data == null || data.getData() == null) return;
         Uri uri = data.getData();
-        status.setText("Copying model to app storage. Please wait...");
+        status.setText("Copying model into app storage. Please wait...");
         loadButton.setEnabled(false);
         worker.execute(() -> {
             try {
@@ -111,6 +183,7 @@ public class MainActivity extends Activity {
                 runOnUiThread(() -> {
                     modelPath = target.getAbsolutePath();
                     status.setText("Model copied. Loading...");
+                    loadButton.setEnabled(true);
                     loadModel(modelPath);
                 });
             } catch (Exception e) {
@@ -126,6 +199,7 @@ public class MainActivity extends Activity {
         if (busy) return;
         busy = true;
         loadButton.setEnabled(false);
+        downloadButton.setEnabled(false);
         status.setText("Loading model. This may take time; 1 GB RAM may be insufficient.");
         worker.execute(() -> {
             String result;
@@ -135,6 +209,7 @@ public class MainActivity extends Activity {
             runOnUiThread(() -> {
                 status.setText(message);
                 loadButton.setEnabled(true);
+                downloadButton.setEnabled(true);
                 loadButton.setText("Choose another GGUF model");
                 loadButton.setOnClickListener(v -> chooseModel());
                 busy = false;
