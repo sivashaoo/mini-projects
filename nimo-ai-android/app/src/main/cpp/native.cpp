@@ -41,9 +41,9 @@ Java_com_nimo_ai_MainActivity_nativeLoadModel(JNIEnv * env, jobject, jstring jpa
     if (!g_model) return env->NewStringUTF("Could not load the GGUF file. Check the file and available RAM.");
 
     llama_context_params cp = llama_context_default_params();
-    cp.n_ctx = 512;
-    cp.n_batch = 128;
-    cp.n_ubatch = 64;
+    cp.n_ctx = 640;
+    cp.n_batch = 512;
+    cp.n_ubatch = 128;
     cp.n_threads = 2;
     cp.n_threads_batch = 2;
     g_ctx = llama_init_from_model(g_model, cp);
