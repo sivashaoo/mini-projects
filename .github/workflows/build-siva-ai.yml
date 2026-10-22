@@ -1,0 +1,52 @@
+name: Build Siva AI Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/build-siva-ai.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Get official llama.cpp Android app
+        run: |
+          git clone --depth 1 https://github.com/ggml-org/llama.cpp.git /tmp/llama.cpp
+          test -d /tmp/llama.cpp/examples/llama.android
+          cp -a /tmp/llama.cpp/examples/llama.android ./SivaAI
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Build debug APK
+        working-directory: SivaAI
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --no-daemon assembleDebug
+
+      - name: Verify APK exists
+        run: |
+          find SivaAI -type f -name "*.apk" -print
+          test -n "$(find SivaAI -type f -name '*debug.apk' -print -quit)"
+
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Siva-AI-Android-APK
+          path: SivaAI/**/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
