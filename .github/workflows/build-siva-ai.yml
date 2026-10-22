@@ -30,7 +30,9 @@ jobs:
           cp -a /tmp/llama.cpp/examples/llama.android ./SivaAI
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: platform-tools
 
       - name: Build debug APK
         working-directory: SivaAI
