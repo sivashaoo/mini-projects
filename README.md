@@ -1,71 +1,66 @@
-# Mini Projects — Electrical, Embedded Systems & IoT
+<div align="center">
 
-A collection of practical mini projects using ESP32, sensors, displays, wireless control, and embedded programming. The sensor-interfacing projects below preserve the starter-code scope from the **Sensor Interfacing Technique Report** and include wiring notes.
+# SIVASAHOO.N
 
-## Existing projects
+### Electrical Engineering • Embedded Systems • IoT
 
-### ESP32 Air Mouse
-A motion-controlled mouse using an ESP32 and an inertial sensor.
+Designing practical hardware-focused projects with microcontrollers, sensors, automation, and connected systems.
 
-**Folder:** [esp32-air-mouse/](./esp32-air-mouse/)
+[![GitHub](https://img.shields.io/badge/GitHub-sivashaoo-181717?style=flat&logo=github)](https://github.com/sivashaoo)
+[![Mini Projects](https://img.shields.io/badge/Portfolio-Mini%20Projects-0A7EA4?style=flat&logo=arduino)](https://github.com/sivashaoo/mini-projects)
+[![Major Projects](https://img.shields.io/badge/Portfolio-Major%20Projects-2457A7?style=flat&logo=github)](https://github.com/sivashaoo/major-projects-)
 
-- [Project README](./esp32-air-mouse/README.md)
-- [Firmware](./esp32-air-mouse/src/esp32-air-mouse.ino)
-- [Hardware pinout](./esp32-air-mouse/hardware/pinout.md)
-- [Working principle](./esp32-air-mouse/docs/working-principle.md)
+</div>
 
-### ESP32 Dino Game
-An embedded mini-game running on an ESP32.
+---
 
-**Folder:** [esp32-dino-game/](./esp32-dino-game/)
+## About this repository
 
-- [Project README](./esp32-dino-game/README.md)
-- [Firmware](./esp32-dino-game/src/esp32-dino-game.ino)
-- [Circuit diagram](./esp32-dino-game/hardware/circuit-diagram.svg)
-- [Hardware pinout](./esp32-dino-game/hardware/pinout.md)
-- [Working principle](./esp32-dino-game/docs/working-principle.md)
+A curated collection of embedded and IoT mini projects focused on hands-on learning, sensor interfacing, firmware development, and hardware integration.
 
-### ESP32 Blynk Temperature Monitor
-An ESP32 temperature monitoring project with Blynk IoT integration.
+**Core areas:** ESP32 · Arduino · Sensor Interfacing · Embedded C/C++ · IoT Prototyping
 
-**Folder:** [esp32-blynk-temperature-monitor/](./esp32-blynk-temperature-monitor/)
+## Project Index
 
-## Sensor Interfacing Technique Report — Selected Mini Projects
+### Embedded and Interactive Projects
 
-### Project 5 — Smart City Traffic, Waste, and Pollution Monitoring
-ESP32 starter sketch counts IR sensor events and measures ultrasonic bin distance. Optional environmental sensors and the dashboard are not implemented in this starter code.
+| Project | Overview | Resources |
+|---|---|---|
+| **ESP32 Air Mouse** | Motion-based cursor control using an inertial sensor | [Code & docs](./esp32-air-mouse/) |
+| **ESP32 Dino Game** | Embedded display-based mini-game | [Code & docs](./esp32-dino-game/) |
+| **ESP32 Blynk Temperature Monitor** | Temperature monitoring with Blynk IoT integration | [Project folder](./esp32-blynk-temperature-monitor/) |
 
-**Folder:** [05-smart-city-monitoring/](./smart-city-monitoring/)
-- [README](./smart-city-monitoring/README.md)
-- [Firmware](./smart-city-monitoring/code/smart_city_monitoring_report_template.ino)
-- [Connections](./smart-city-monitoring/hardware/connections.md)
+### Sensor Interfacing Technique Report Projects
 
-### Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
-ESP32 + DHT22 + PIR starter sketch reports temperature/humidity and motion and triggers a demonstration LED alert. It is not a certified wildfire alarm.
+| Project | Implementation scope | Resources |
+|---|---|---|
+| **Project 5 — Smart City Traffic, Waste, and Pollution Monitoring** | IR event counting and ultrasonic bin-distance demonstration | [README](./smart-city-monitoring/README.md) · [Firmware](./smart-city-monitoring/code/smart_city_monitoring_report_template.ino) · [Connections](./smart-city-monitoring/hardware/connections.md) |
+| **Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation** | DHT22 temperature/humidity and PIR motion alert demonstration | [README](./environmental-monitoring/README.md) · [Firmware](./environmental-monitoring/code/environmental_monitoring_report_template.ino) · [Connections](./environmental-monitoring/hardware/connections.md) |
+| **Project 18 — Smart Parking Management and Payment-System Demonstrator** | Single-bay ultrasonic occupancy demonstration | [README](./smart-parking/README.md) · [Firmware](./smart-parking/code/smart_parking_report_template.ino) · [Connections](./smart-parking/hardware/connections.md) |
+| **Project 20 — Smart Waste Management and Sustainable Recycling** | Ultrasonic bin-fill estimate and collection-threshold alert | [README](./smart-waste-management/README.md) · [Firmware](./smart-waste-management/code/smart_waste_management_report_template.ino) · [Connections](./smart-waste-management/hardware/connections.md) |
 
-**Folder:** [06-environmental-monitoring/](./environmental-monitoring/)
-- [README](./environmental-monitoring/README.md)
-- [Firmware](./environmental-monitoring/code/environmental_monitoring_report_template.ino)
-- [Connections](./environmental-monitoring/hardware/connections.md)
+## How to use a project
 
-### Project 18 — Smart Parking Management and Payment-System Demonstrator
-ESP32 ultrasonic single-bay occupancy demonstrator with LED and serial status. Payment and multi-bay management are not implemented.
+1. Open its README and review the required components and libraries.
+2. Check the hardware connection guide before wiring.
+3. Open the firmware in Arduino IDE and select the correct board and port.
+4. Configure pins and calibrate thresholds for the exact sensor modules.
+5. Compile and test the project before adapting it to a real application.
 
-**Folder:** [18-smart-parking/](./smart-parking/)
-- [README](./smart-parking/README.md)
-- [Firmware](./smart-parking/code/smart_parking_report_template.ino)
-- [Connections](./smart-parking/hardware/connections.md)
+## Engineering and verification notes
 
-### Project 20 — Smart Waste Management and Sustainable Recycling
-ESP32 ultrasonic bin-fill estimate with a configurable collection threshold and sensor-error status.
+- Report-derived examples are identified as starter templates; they are not represented as fully validated systems.
+- Sensor accuracy depends on module quality, calibration, wiring, and environment.
+- ESP32 GPIO pins are **not 5 V tolerant**. Use a suitable level shifter or voltage divider for 5 V signals such as common HC-SR04 ECHO outputs.
+- Safety-critical, automotive, environmental, and payment applications require substantially more engineering and validation than a demonstration sketch.
 
-**Folder:** [20-smart-waste-management/](./smart-waste-management/)
-- [README](./smart-waste-management/README.md)
-- [Firmware](./smart-waste-management/code/smart_waste_management_report_template.ino)
-- [Connections](./smart-waste-management/hardware/connections.md)
+## Related work
 
-## Verification notes
-- The sensor-interfacing programs are starter templates from the report, not experimentally verified production firmware.
-- Check each project's README for libraries, pin connections, calibration and limitations.
-- For ESP32, never connect 5 V logic directly to GPIO; use a suitable level shifter/divider where required.
-- Compile and test on the intended hardware before claiming a working prototype.
+- **Major engineering projects:** [sivashaoo/major-projects-](https://github.com/sivashaoo/major-projects-)
+- **GitHub profile:** [github.com/sivashaoo](https://github.com/sivashaoo)
+
+---
+
+<div align="center">
+<sub>Built for learning, experimentation, and iterative engineering improvement.</sub>
+</div>
