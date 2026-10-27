@@ -32,15 +32,15 @@ An ESP32 temperature monitoring project with Blynk IoT integration.
 
 ## Sensor Interfacing Technique Report — Selected Mini Projects
 
-### Project 5 — Smart City Traffic, Waste, and Pollution Monitoring
-ESP32 starter sketch counts IR sensor events and measures ultrasonic bin distance. The optional environmental sensors and dashboard are not implemented in this starter code.
+### Smart City Monitoring
+ESP32 starter sketch counts IR sensor events and measures ultrasonic bin distance. Optional environmental sensors and the dashboard are not implemented in this starter code.
 
 **Folder:** [05-smart-city-monitoring/](./05-smart-city-monitoring/)
 - [README](./05-smart-city-monitoring/README.md)
 - [Firmware](./05-smart-city-monitoring/code/smart_city_monitoring_report_template.ino)
 - [Connections](./05-smart-city-monitoring/hardware/connections.md)
 
-### Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
+### Environmental Monitoring
 ESP32 + DHT22 + PIR starter sketch reports temperature/humidity and motion and triggers a demonstration LED alert. It is not a certified wildfire alarm.
 
 **Folder:** [06-environmental-monitoring/](./06-environmental-monitoring/)
@@ -48,7 +48,7 @@ ESP32 + DHT22 + PIR starter sketch reports temperature/humidity and motion and t
 - [Firmware](./06-environmental-monitoring/code/environmental_monitoring_report_template.ino)
 - [Connections](./06-environmental-monitoring/hardware/connections.md)
 
-### Project 18 — Smart Parking Management and Payment-System Demonstrator
+### Smart Parking
 ESP32 ultrasonic single-bay occupancy demonstrator with LED and serial status. Payment and multi-bay management are not implemented.
 
 **Folder:** [18-smart-parking/](./18-smart-parking/)
@@ -56,7 +56,7 @@ ESP32 ultrasonic single-bay occupancy demonstrator with LED and serial status. P
 - [Firmware](./18-smart-parking/code/smart_parking_report_template.ino)
 - [Connections](./18-smart-parking/hardware/connections.md)
 
-### Project 20 — Smart Waste Management and Sustainable Recycling
+### Smart Waste Management
 ESP32 ultrasonic bin-fill estimate with a configurable collection threshold and sensor-error status.
 
 **Folder:** [20-smart-waste-management/](./20-smart-waste-management/)
