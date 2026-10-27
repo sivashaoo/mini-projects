@@ -1,23 +1,23 @@
 # Mini Projects — Electrical, Embedded Systems & IoT
 
-A collection of practical mini projects using ESP32, sensors, displays, wireless control, and embedded programming.
+A collection of practical mini projects using ESP32, sensors, displays, wireless control, and embedded programming. The sensor-interfacing projects below preserve the starter-code scope from the **Sensor Interfacing Technique Report** and include wiring notes.
 
-## Projects
+## Existing projects
 
-### 1. ESP32 Air Mouse
-A motion-controlled mouse using an ESP32 and an inertial sensor. The firmware translates hand movement into cursor movement and supports mouse actions as documented in the project.
+### ESP32 Air Mouse
+A motion-controlled mouse using an ESP32 and an inertial sensor.
 
-**Project folder:** [esp32-air-mouse/](./esp32-air-mouse/)
+**Folder:** [esp32-air-mouse/](./esp32-air-mouse/)
 
 - [Project README](./esp32-air-mouse/README.md)
 - [Firmware](./esp32-air-mouse/src/esp32-air-mouse.ino)
 - [Hardware pinout](./esp32-air-mouse/hardware/pinout.md)
 - [Working principle](./esp32-air-mouse/docs/working-principle.md)
 
-### 2. ESP32 Dino Game
-An embedded mini-game running on an ESP32 with the display and controls described in its documentation.
+### ESP32 Dino Game
+An embedded mini-game running on an ESP32.
 
-**Project folder:** [esp32-dino-game/](./esp32-dino-game/)
+**Folder:** [esp32-dino-game/](./esp32-dino-game/)
 
 - [Project README](./esp32-dino-game/README.md)
 - [Firmware](./esp32-dino-game/src/esp32-dino-game.ino)
@@ -25,15 +25,47 @@ An embedded mini-game running on an ESP32 with the display and controls describe
 - [Hardware pinout](./esp32-dino-game/hardware/pinout.md)
 - [Working principle](./esp32-dino-game/docs/working-principle.md)
 
-### 3. ESP32 Blynk Temperature Monitor
+### ESP32 Blynk Temperature Monitor
 An ESP32 temperature monitoring project with Blynk IoT integration.
 
-**Project folder:** [esp32-blynk-temperature-monitor/](./esp32-blynk-temperature-monitor/)
+**Folder:** [esp32-blynk-temperature-monitor/](./esp32-blynk-temperature-monitor/)
 
-## Repository organization
+## Sensor Interfacing Technique Report — Selected Mini Projects
 
-Each project has its own folder containing source code and relevant documentation. Original standalone repositories have not been modified by these copies.
+### Project 5 — Smart City Traffic, Waste, and Pollution Monitoring
+ESP32 starter sketch counts IR sensor events and measures ultrasonic bin distance. The optional environmental sensors and dashboard are not implemented in this starter code.
 
-## Contributions and verification
+**Folder:** [05-smart-city-monitoring/](./05-smart-city-monitoring/)
+- [README](./05-smart-city-monitoring/README.md)
+- [Firmware](./05-smart-city-monitoring/code/smart_city_monitoring_report_template.ino)
+- [Connections](./05-smart-city-monitoring/hardware/connections.md)
 
-Check the project-specific README for required libraries, wiring, setup, and usage. Confirm firmware compilation and hardware behavior on the target components before relying on it.
+### Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
+ESP32 + DHT22 + PIR starter sketch reports temperature/humidity and motion and triggers a demonstration LED alert. It is not a certified wildfire alarm.
+
+**Folder:** [06-environmental-monitoring/](./06-environmental-monitoring/)
+- [README](./06-environmental-monitoring/README.md)
+- [Firmware](./06-environmental-monitoring/code/environmental_monitoring_report_template.ino)
+- [Connections](./06-environmental-monitoring/hardware/connections.md)
+
+### Project 18 — Smart Parking Management and Payment-System Demonstrator
+ESP32 ultrasonic single-bay occupancy demonstrator with LED and serial status. Payment and multi-bay management are not implemented.
+
+**Folder:** [18-smart-parking/](./18-smart-parking/)
+- [README](./18-smart-parking/README.md)
+- [Firmware](./18-smart-parking/code/smart_parking_report_template.ino)
+- [Connections](./18-smart-parking/hardware/connections.md)
+
+### Project 20 — Smart Waste Management and Sustainable Recycling
+ESP32 ultrasonic bin-fill estimate with a configurable collection threshold and sensor-error status.
+
+**Folder:** [20-smart-waste-management/](./20-smart-waste-management/)
+- [README](./20-smart-waste-management/README.md)
+- [Firmware](./20-smart-waste-management/code/smart_waste_management_report_template.ino)
+- [Connections](./20-smart-waste-management/hardware/connections.md)
+
+## Verification notes
+- The sensor-interfacing programs are starter templates from the report, not experimentally verified production firmware.
+- Check each project's README for libraries, pin connections, calibration and limitations.
+- For ESP32, never connect 5 V logic directly to GPIO; use a suitable level shifter/divider where required.
+- Compile and test on the intended hardware before claiming a working prototype.
