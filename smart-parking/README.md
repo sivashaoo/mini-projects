@@ -1,4 +1,4 @@
-# Smart Parking Management and Payment-System Demonstrator
+# Project 18 — Smart Parking Management and Payment-System Demonstrator
 
 **Source:** Sensor Interfacing Technique Report, Project 18 — Program Code / Integration Template.  
 **Category:** Mini project / smart mobility.
