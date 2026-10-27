@@ -1,4 +1,4 @@
-# Project 5 — Smart City Traffic, Waste, and Pollution Monitoring
+# Smart City Monitoring
 
 **Source:** Sensor Interfacing Technique Report, Project 5 — Program Code / Integration Template.  
 **Category:** Mini project / smart-city monitoring.
