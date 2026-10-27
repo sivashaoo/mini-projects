@@ -1,4 +1,4 @@
-# Project 20 — Smart Waste Management and Sustainable Recycling
+# Smart Waste Management and Sustainable Recycling
 
 **Source:** Sensor Interfacing Technique Report, Project 20 — Program Code / Integration Template.  
 **Category:** Mini project / waste management.
