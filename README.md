@@ -32,37 +32,37 @@ An ESP32 temperature monitoring project with Blynk IoT integration.
 
 ## Sensor Interfacing Technique Report — Selected Mini Projects
 
-### Smart City Monitoring
+### Project 5 — Smart City Traffic, Waste, and Pollution Monitoring
 ESP32 starter sketch counts IR sensor events and measures ultrasonic bin distance. Optional environmental sensors and the dashboard are not implemented in this starter code.
 
-**Folder:** [05-smart-city-monitoring/](./05-smart-city-monitoring/)
-- [README](./05-smart-city-monitoring/README.md)
-- [Firmware](./05-smart-city-monitoring/code/smart_city_monitoring_report_template.ino)
-- [Connections](./05-smart-city-monitoring/hardware/connections.md)
+**Folder:** [05-smart-city-monitoring/](./smart-city-monitoring/)
+- [README](./smart-city-monitoring/README.md)
+- [Firmware](./smart-city-monitoring/code/smart_city_monitoring_report_template.ino)
+- [Connections](./smart-city-monitoring/hardware/connections.md)
 
-### Environmental Monitoring
+### Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
 ESP32 + DHT22 + PIR starter sketch reports temperature/humidity and motion and triggers a demonstration LED alert. It is not a certified wildfire alarm.
 
-**Folder:** [06-environmental-monitoring/](./06-environmental-monitoring/)
-- [README](./06-environmental-monitoring/README.md)
-- [Firmware](./06-environmental-monitoring/code/environmental_monitoring_report_template.ino)
-- [Connections](./06-environmental-monitoring/hardware/connections.md)
+**Folder:** [06-environmental-monitoring/](./environmental-monitoring/)
+- [README](./environmental-monitoring/README.md)
+- [Firmware](./environmental-monitoring/code/environmental_monitoring_report_template.ino)
+- [Connections](./environmental-monitoring/hardware/connections.md)
 
-### Smart Parking
+### Project 18 — Smart Parking Management and Payment-System Demonstrator
 ESP32 ultrasonic single-bay occupancy demonstrator with LED and serial status. Payment and multi-bay management are not implemented.
 
-**Folder:** [18-smart-parking/](./18-smart-parking/)
-- [README](./18-smart-parking/README.md)
-- [Firmware](./18-smart-parking/code/smart_parking_report_template.ino)
-- [Connections](./18-smart-parking/hardware/connections.md)
+**Folder:** [18-smart-parking/](./smart-parking/)
+- [README](./smart-parking/README.md)
+- [Firmware](./smart-parking/code/smart_parking_report_template.ino)
+- [Connections](./smart-parking/hardware/connections.md)
 
-### Smart Waste Management
+### Project 20 — Smart Waste Management and Sustainable Recycling
 ESP32 ultrasonic bin-fill estimate with a configurable collection threshold and sensor-error status.
 
-**Folder:** [20-smart-waste-management/](./20-smart-waste-management/)
-- [README](./20-smart-waste-management/README.md)
-- [Firmware](./20-smart-waste-management/code/smart_waste_management_report_template.ino)
-- [Connections](./20-smart-waste-management/hardware/connections.md)
+**Folder:** [20-smart-waste-management/](./smart-waste-management/)
+- [README](./smart-waste-management/README.md)
+- [Firmware](./smart-waste-management/code/smart_waste_management_report_template.ino)
+- [Connections](./smart-waste-management/hardware/connections.md)
 
 ## Verification notes
 - The sensor-interfacing programs are starter templates from the report, not experimentally verified production firmware.
