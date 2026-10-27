@@ -1,4 +1,4 @@
-# Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
+# Project 6 — Environmental Monitoring: Pollution, Wildfire, and Wildlife Observation
 
 **Source:** Sensor Interfacing Technique Report, Project 6 — Program Code / Integration Template.  
 **Category:** Mini project / environmental sensing.
