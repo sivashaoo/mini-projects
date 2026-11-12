@@ -25,7 +25,6 @@ A curated collection of practical mini projects focused on ESP32, Arduino, senso
 | **Smart Parking** | Single-bay ultrasonic occupancy demonstrator | Ultrasonic (HC-SR04) | [View](./smart-parking/) |
 | **Smart Waste Management** | Ultrasonic bin-fill estimation and threshold alert | Ultrasonic, ESP32 / Arduino | [View](./smart-waste-management/) |
 
-> **Note:** Some folders still contain older numbered versions (e.g. `05-smart-city-monitoring`). Prefer the clean named folders listed above.
 
 ---
 
