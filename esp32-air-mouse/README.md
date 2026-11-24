@@ -1,109 +1,126 @@
 # 🖱️ ESP32 Air Mouse
 
-A wireless air mouse built using an **ESP32** and **MPU6050** motion sensor. Hand movement controls the computer cursor through Bluetooth HID, while two physical buttons provide left and right mouse clicks.
+**Control your computer cursor with hand gestures using ESP32 + MPU6050**
+
+A fully wireless Bluetooth HID air mouse. Move your hand → the cursor moves. Two physical buttons give left and right clicks.
+
+Perfect learning project for:
+- Bluetooth HID on ESP32
+- MPU6050 gyroscope/accelerometer
+- Real-time sensor fusion & smoothing
+- Practical embedded + HCI applications
+
+---
 
 ## ✨ Features
 
-- Wireless Bluetooth mouse control
-- Motion-based cursor movement
-- MPU6050 gyroscope sensing
-- Left-click and right-click buttons
-- Adjustable sensitivity
-- Dead-zone filtering
-- Movement smoothing
-- Works as a HID mouse on compatible computers
+- True wireless Bluetooth mouse (HID)
+- Smooth motion-based cursor control
+- Adjustable sensitivity + dead-zone filtering
+- Left-click & right-click buttons
+- Works on most modern computers (Windows, macOS, Linux, Android with HID support)
+- Clean, readable Arduino code
 
-## 🔧 Hardware
+---
 
-- ESP32 development board
-- MPU6050 accelerometer/gyroscope
-- 2 push buttons
-- Jumper wires
-- Breadboard
-- USB cable for programming/power
+## 🔧 Hardware Required
+
+| Component              | Quantity |
+|------------------------|----------|
+| ESP32 Dev Board        | 1        |
+| MPU6050 (GY-521)       | 1        |
+| Push buttons           | 2        |
+| Jumper wires           | -        |
+| Breadboard (optional)  | 1        |
+| USB cable              | 1        |
+
+---
 
 ## 🔌 Pin Connections
 
 ### MPU6050 → ESP32
 
-| MPU6050 | ESP32 |
-|---|---:|
-| VCC | 3.3V |
-| GND | GND |
-| SDA | GPIO 21 |
-| SCL | GPIO 22 |
+| MPU6050 | ESP32     |
+|---------|-----------|
+| VCC     | 3.3V      |
+| GND     | GND       |
+| SDA     | GPIO 21   |
+| SCL     | GPIO 22   |
 
 ### Buttons → ESP32
 
-| Function | GPIO | Other button terminal |
-|---|---:|---|
-| Left click | GPIO 19 | GND |
-| Right click | GPIO 18 | GND |
+| Function    | GPIO   | Other side |
+|-------------|--------|------------|
+| Left Click  | GPIO 19 | GND       |
+| Right Click | GPIO 18 | GND       |
 
-The buttons use the ESP32 internal pull-up resistors.
+(Buttons use ESP32 internal pull-ups)
 
-## 🧠 Working
+---
 
-```text
+## 🧠 How It Works
+
+```
 Hand Movement
-      ↓
-   MPU6050
-      ↓ I2C
-    ESP32
-      ↓
- Bluetooth HID
-      ↓
- Laptop / PC
-      ↓
-Mouse Cursor
+     ↓
+  MPU6050 (Gyro)
+     ↓ I2C
+   ESP32
+     ↓
+Bluetooth HID
+     ↓
+Computer Cursor
 ```
 
-The gyroscope detects rotation of the controller. ESP32 converts the measured motion into X/Y mouse movement and transmits it wirelessly over Bluetooth.
+The MPU6050 measures angular velocity. The ESP32 processes the data (dead-zone + sensitivity + smoothing) and sends standard mouse movement reports over Bluetooth Low Energy using the BLE Mouse library.
 
-## 💻 Required Libraries
+---
 
-Install these libraries in Arduino IDE:
+## 📚 Required Libraries
 
-- Adafruit GFX is not required for this project.
-- `MPU6050` compatible library
-- `ESP32 BLE Mouse` library
+Install via Arduino Library Manager:
 
-The firmware uses `Wire.h` for I2C and `BleMouse.h` for Bluetooth HID mouse control.
+1. **ESP32 BLE Mouse** (by T-vK)
+2. A compatible **MPU6050** library (or use the raw I2C approach in the code)
 
-## 🚀 Uploading
+Also uses the built-in `Wire.h`.
 
-1. Open `src/esp32-air-mouse.ino` in Arduino IDE.
-2. Select your ESP32 board.
-3. Install the required libraries.
-4. Connect ESP32 through USB.
-5. Select the correct COM port.
-6. Upload the program.
-7. Open Serial Monitor at **115200 baud**.
-8. Pair the computer with **ESP32 Air Mouse**.
-9. Move the ESP32 to control the cursor.
+---
+
+## 🚀 Quick Start
+
+1. Open `src/esp32-air-mouse.ino` in Arduino IDE
+2. Select your **ESP32** board and correct COM port
+3. Install the required libraries
+4. Upload the sketch
+5. Open Serial Monitor at **115200 baud** (for debug info)
+6. On your computer, go to Bluetooth settings and pair with **"ESP32 Air Mouse"**
+7. Move the board → cursor moves!
+
+---
 
 ## 🎮 Controls
 
-| Action | Control |
-|---|---|
-| Move cursor | Rotate/move ESP32 |
-| Left click | GPIO 19 button |
-| Right click | GPIO 18 button |
+| Action          | How                          |
+|-----------------|------------------------------|
+| Move cursor     | Tilt / rotate the ESP32      |
+| Left click      | Press button on GPIO 19      |
+| Right click     | Press button on GPIO 18      |
 
-## ⚙️ Sensitivity
+### Sensitivity Tuning
 
-The main sensitivity value is defined in the firmware:
+In the code:
 
 ```cpp
-float sensitivity = 0.035;
+float sensitivity = 0.035;   // Increase for faster movement
 ```
 
-Increase it for faster cursor movement or decrease it for finer control.
+---
 
 ## 📁 Project Structure
 
-```text
-essp32-air-mouse/
+```
+esp32-air-mouse/
 ├── README.md
 ├── src/
 │   └── esp32-air-mouse.ino
@@ -113,17 +130,26 @@ essp32-air-mouse/
     └── working-principle.md
 ```
 
-## 🔮 Future Improvements
+---
 
-- Scroll control using additional gesture
-- Click-and-drag gesture
-- Adjustable sensitivity buttons
-- Battery-powered wearable enclosure
-- Rechargeable Li-ion power system
-- Gesture shortcuts
-- Calibration mode
-- 3D printed ergonomic enclosure
+## 🔮 Possible Upgrades
 
-## ⚠️ Note
+- Scroll wheel via gesture or extra button
+- Click-and-drag support
+- On-device sensitivity buttons
+- Battery + 3D-printed handheld enclosure
+- Gesture shortcuts (e.g. double-tap to click)
+- Calibration routine on startup
 
-This is an educational prototype. Bluetooth HID compatibility can vary between host devices and ESP32 firmware/library versions.
+---
+
+## ⚠️ Notes
+
+- This is an **educational prototype**. Bluetooth HID behaviour can vary slightly across operating systems and ESP32 core versions.
+- Always power the MPU6050 from 3.3V.
+- For best results, keep the sensor relatively still when not moving the cursor (dead-zone helps).
+
+---
+
+**Found this useful?** Give the [mini-projects repo](https://github.com/sivashaoo/mini-projects) a star ⭐  
+Questions or improvements? Open an issue or PR!
